@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getWorkoutPlans, getWorkoutPlanByName, saveWorkoutLog } from "@/lib/firebase";
-import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan";
+import { WorkoutPlan } from "@/Interfaces/workoutPlan";
 import { ExerciseLog, WorkoutLog } from "@/Interfaces/WorkoutLog";
 import { useRouter } from "next/navigation";
 
