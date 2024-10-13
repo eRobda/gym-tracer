@@ -1,30 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react"; // Import Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase"; // Import updateWorkoutPlan
-import { WorkoutPlan, Exercise } from "@/interfaces/workoutPlan"; // Import interfaces
+import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase"; 
+import { WorkoutPlan, Exercise } from "@/interfaces/workoutPlan"; 
 import { ExerciseItem } from "../ExerciseItem";
 
-export default function EditWorkoutPlan() {
+const EditWorkoutPlanContent = () => {
     const { user } = useAuth();
     const [planName, setPlanName] = useState<string>("");
-    const [exercises, setExercises] = useState<Exercise[]>([]); // Use Exercise interface
+    const [exercises, setExercises] = useState<Exercise[]>([]);
     const router = useRouter();
     const searchParams = useSearchParams();
     const initialPlanName = searchParams.get("planName");
-    const [oldPlanName, setOldPlanName] = useState<string>(""); // Store old plan name here
+    const [oldPlanName, setOldPlanName] = useState<string>("");
 
     useEffect(() => {
         if (user && initialPlanName) {
             const fetchPlans = async () => {
-                const plans: WorkoutPlan[] = await getWorkoutPlans(user.uid); // Ensure the return type is WorkoutPlan[]
+                const plans: WorkoutPlan[] = await getWorkoutPlans(user.uid);
                 const selectedPlan = plans.find((plan) => plan.planName === initialPlanName);
                 if (selectedPlan) {
                     setPlanName(selectedPlan.planName);
                     setExercises(selectedPlan.exercises);
-                    setOldPlanName(selectedPlan.planName); // Store old plan name here
+                    setOldPlanName(selectedPlan.planName);
                 }
             };
             fetchPlans();
@@ -39,16 +39,16 @@ export default function EditWorkoutPlan() {
             exercises,
         };
 
-        await updateWorkoutPlan(user.uid, oldPlanName, updatedPlan); // Pass the whole updated plan object
+        await updateWorkoutPlan(user.uid, oldPlanName, updatedPlan);
         console.log("Workout plan updated.");
-        router.push("/plans"); // Redirect to /plans after updating the plan
+        router.push("/plans");
     };
 
     const deletePlan = async () => {
         if (!user || !planName) return;
         await deleteWorkoutPlan(user.uid, oldPlanName);
         console.log("Workout plan deleted.");
-        router.push("/plans"); // Redirect to /plans after updating the plan
+        router.push("/plans");
     };
 
     return (
@@ -92,12 +92,22 @@ export default function EditWorkoutPlan() {
                     Uložit plán
                 </button>
                 <button
-                className="mt-6 bg-red-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
-                onClick={deletePlan}
+                    className="mt-6 bg-red-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
+                    onClick={deletePlan}
                 >
                     Smazat plán
                 </button>
             </div>
         </div>
     );
-}
+};
+
+const EditWorkoutPlan = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditWorkoutPlanContent />
+        </Suspense>
+    );
+};
+
+export default EditWorkoutPlan;
