@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase"; // Import updateWorkoutPlan
-import { ExerciseItem } from "./../ExerciseItem";
-import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; // Import interfaces
+import { WorkoutPlan, Exercise } from "@/interfaces/workoutPlan"; // Import interfaces
+import { ExerciseItem } from "../ExerciseItem";
 
 export default function EditWorkoutPlan() {
     const { user } = useAuth();
@@ -76,7 +76,7 @@ export default function EditWorkoutPlan() {
                             index={index}
                             exercise={exercise}
                             onDelete={() => setExercises((prev) => prev.filter((_, i) => i !== index))}
-                            onUpdate={(updatedExercise) =>
+                            onUpdate={(updatedExercise: Exercise) =>
                                 setExercises((prev) =>
                                     prev.map((ex, i) => (i === index ? updatedExercise : ex))
                                 )

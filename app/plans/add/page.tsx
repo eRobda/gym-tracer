@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ExerciseItem } from "../ExerciseItem";
 import { useAuth } from "@/context/AuthContext";
 import { saveWorkoutPlan } from "@/lib/firebase"; // Import saveWorkoutPlan
 import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
-import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; // Import interfaces
+import { WorkoutPlan, Exercise } from "@/interfaces/workoutPlan"; // Import interfaces
+import { ExerciseItem } from "../ExerciseItem";
 
 export default function AddWorkoutPlan() {
     const { user } = useAuth();

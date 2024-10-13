@@ -1,5 +1,3 @@
-// Interfaces/workoutPlan.ts
-
 export interface WorkoutPlan {
     planName: string;
     exercises: Exercise[];

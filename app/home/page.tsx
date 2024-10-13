@@ -3,23 +3,23 @@
 
 import { useEffect } from "react";
 import Navbar from "../Navbar";
-import WorkoutCard from "./WorkoutCard";
 import { useAuth } from "@/context/AuthContext";
 import { checkAndCreateUserCollection } from "@/lib/firebase";
 import { NavbarItems } from "@/Enums/NavbarEnum";
+import WorkoutCard from "./WorkoutCard";
 
 export default function Home() {
     const { user } = useAuth();
-    
-    if (!user) {
-        return <p>Loading...</p>; // or redirect, show a login button, etc.
-    }
 
     useEffect(() => {
         if (user) {
             checkAndCreateUserCollection(user);
         }
     }, [user]);
+
+    if (!user) {
+        return <p>Loading...</p>; // or redirect, show a login button, etc.
+    }
 
     return (
         <div>
@@ -29,7 +29,7 @@ export default function Home() {
                 <WorkoutCard muscleGroup="Prsa/záda" trainingLenght="45m 26s" date="12. 10. 2024" />
                 <WorkoutCard muscleGroup="Prsa/záda" trainingLenght="45m 26s" date="12. 10. 2024" />
             </div>
-            <Navbar active={NavbarItems.trainings}/>
+            <Navbar active={NavbarItems.trainings} />
         </div>
     );
 }

@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
-import WorkoutPlanCard from "./WorkoutPlanCard";
 import Link from 'next/link';
 import { useAuth } from "@/context/AuthContext"; // Import useAuth to get the current user
 import { getWorkoutPlans } from "@/lib/firebase"; // Import the function to fetch workout plans
-import { WorkoutPlan } from "@/Interfaces/workoutPlan"; // Import the WorkoutPlan interface
+import { WorkoutPlan } from "@/interfaces/workoutPlan"; // Import the WorkoutPlan interface
 import { NavbarItems } from "@/Enums/NavbarEnum";
+import WorkoutPlanCard from "./WorkoutPlanCard";
 
 export default function WorkoutPlans() {
     const { user } = useAuth(); // Get the logged-in user

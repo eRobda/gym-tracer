@@ -1,4 +1,4 @@
-import { WorkoutPlan } from "@/Interfaces/workoutPlan";
+import { WorkoutPlan } from "@/interfaces/workoutPlan";
 import Link from 'next/link';
 
 export default function WorkoutPlanCard({planName}: WorkoutPlan){

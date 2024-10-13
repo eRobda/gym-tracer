@@ -1,7 +1,7 @@
 // firebase.ts
-import { WorkoutPlan } from "@/Interfaces/workoutPlan";
+import { WorkoutPlan } from "@/interfaces/workoutPlan";
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, User } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -19,7 +19,7 @@ export const provider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 
 // Function to check if user collection exists, and create it if not
-export const checkAndCreateUserCollection = async (user: any) => {
+export const checkAndCreateUserCollection = async (user: User) => {
     if (!user) return;
 
     const userRef = doc(db, "users", user.uid); // Reference to the user document
