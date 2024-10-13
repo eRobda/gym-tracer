@@ -1,5 +1,5 @@
 // firebase.ts
-import { WorkoutPlan } from "@/interfaces/workoutPlan";
+import { WorkoutPlan } from "@/Interfaces/workoutPlan";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, User } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";

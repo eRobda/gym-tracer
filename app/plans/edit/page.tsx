@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react"; // Import Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase"; 
-import { WorkoutPlan, Exercise } from "@/interfaces/workoutPlan"; 
+import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; 
 import { ExerciseItem } from "../ExerciseItem";
 
 const EditWorkoutPlanContent = () => {

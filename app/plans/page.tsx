@@ -5,7 +5,7 @@ import Navbar from "../Navbar";
 import Link from 'next/link';
 import { useAuth } from "@/context/AuthContext"; // Import useAuth to get the current user
 import { getWorkoutPlans } from "@/lib/firebase"; // Import the function to fetch workout plans
-import { WorkoutPlan } from "@/interfaces/workoutPlan"; // Import the WorkoutPlan interface
+import { WorkoutPlan } from "@/Interfaces/workoutPlan"; // Import the WorkoutPlan interface
 import { NavbarItems } from "@/Enums/NavbarEnum";
 import WorkoutPlanCard from "./WorkoutPlanCard";
 
