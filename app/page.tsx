@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const HomePage = () => {
-    const { user, login, logout } = useAuth(); // This should work now
+    const { user, login } = useAuth(); // This should work now
     const router = useRouter();
 
     useEffect(() => {

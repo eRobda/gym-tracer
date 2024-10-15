@@ -6,6 +6,9 @@ import { getWorkoutPlans, getWorkoutPlanByName, saveWorkoutLog } from "@/lib/fir
 import { WorkoutPlan } from "@/Interfaces/workoutPlan";
 import { ExerciseLog, WorkoutLog } from "@/Interfaces/WorkoutLog";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import arrowBackIcon from "@/icons/i_arrow_back.png";
+import Link from "next/link";
 
 export default function Workout() {
     const { user } = useAuth();
@@ -115,7 +118,7 @@ export default function Workout() {
                 if (user) {
                     await saveWorkoutLog(user.uid, workoutLog);
                     router.push("/home");
-                    
+
                 } else {
                     console.error("User not authenticated. Unable to save workout log.");
                 }
@@ -127,7 +130,12 @@ export default function Workout() {
     if (loading) {
         return (
             <div>
-                <h1 className="text-2xl font-bold">Zahájení tréninku</h1>
+                <Link href={"/home"}>
+                    <div className="flex">
+                        <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                        <h1 className="text-2xl font-bold">Zahájení tréninku</h1>
+                    </div>
+                </Link>
                 <p>Načítání...</p>
             </div>
         );
@@ -136,7 +144,13 @@ export default function Workout() {
     if (!isSelectedWorkoutPlan) {
         return (
             <>
-                <h1 className="text-2xl font-bold">Zahájení tréninku</h1>
+                <Link href={"/home"}>
+                    <div className="flex">
+                        <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                        <h1 className="text-2xl font-bold">Zahájení tréninku</h1>
+                    </div>
+                </Link>
+
                 {error ? (
                     <p className="text-red-500">{error}</p>
                 ) : (
@@ -170,7 +184,13 @@ export default function Workout() {
     return (
         <div className="flex flex-col justify-between">
             <div>
-                <h1 className="text-2xl font-bold">Průběh tréninku</h1>
+                <Link href={"/home"}>
+                    <div className="flex">
+                        <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                        <h1 className="text-2xl font-bold">Průběh tréninku</h1>
+                    </div>
+                </Link>
+
                 <div>Vybraný plán: {selectedWorkoutPlan?.planName}</div>
                 <div className="w-full mt-32 flex flex-col items-center">
                     <p className="text-center text-xl font-bold">{currentExercise?.name}</p>

@@ -6,6 +6,8 @@ import { saveWorkoutPlan } from "@/lib/firebase"; // Import saveWorkoutPlan
 import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
 import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; // Import interfaces
 import { ExerciseItem } from "../ExerciseItem";
+import arrowBackIcon from "@/icons/i_arrow_back.png";
+import Link from "next/link";
 
 export default function AddWorkoutPlan() {
     const { user } = useAuth();
@@ -47,7 +49,12 @@ export default function AddWorkoutPlan() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold">Vytvoř si svůj plán</h1>
+            <Link href={"/home"}>
+                    <div className="flex">
+                        <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                        <h1 className="text-2xl font-bold">Vytvoř si svůj plán</h1>
+                    </div>
+                </Link>
 
             <div className="flex flex-col mt-4">
                 <div className="flex flex-col gap-1">
