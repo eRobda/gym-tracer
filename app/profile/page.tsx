@@ -14,7 +14,7 @@ export default function Profile() {
     return (
         <div className="flex flex-col items-center">
             <div className="flex items-center gap-5 w-full">
-                <img className="rounded-full" src={user.photoURL}></img>
+                <img className="rounded-full" alt="" src={user.photoURL}></img>
                 <div className="flex flex-col">
                     <h1 className="text-2xl font-bold">{user.displayName}</h1>
                     <div className="flex gap-2">
