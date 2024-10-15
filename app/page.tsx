@@ -16,14 +16,14 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>Welcome to My Next.js App</h1>
+            <h1 className="text-2xl font-bold w-full text-center">Gym Tracer</h1>
             {user ? (
                 <div>
-                    <p>Hello, {user.displayName}</p>
-                    <button onClick={logout}>Log Out</button>
+                    <div>Načítání...</div>
+                    {/* <button onClick={logout}>Log Out</button> */}
                 </div>
             ) : (
-                <button onClick={login}>Log In with Google</button>
+                <button className="mt-5 w-full bg-transparent text-white outline outline-1 rounded-xl py-2 px-3 outline-[#313244]" onClick={login}>Log In with Google</button>
             )}
         </div>
     );
