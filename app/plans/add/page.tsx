@@ -8,6 +8,7 @@ import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; // Import inte
 import { ExerciseItem } from "../ExerciseItem";
 import arrowBackIcon from "@/icons/i_arrow_back.png";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AddWorkoutPlan() {
     const { user } = useAuth();
