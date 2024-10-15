@@ -50,12 +50,12 @@ export default function AddWorkoutPlan() {
 
     return (
         <div>
-            <Link href={"/home"}>
-                    <div className="flex">
-                        <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
-                        <h1 className="text-2xl font-bold">Vytvoř si svůj plán</h1>
-                    </div>
-                </Link>
+            <Link href={"/plans"}>
+                <div className="flex">
+                    <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                    <h1 className="text-2xl font-bold">Vytvoř si svůj plán</h1>
+                </div>
+            </Link>
 
             <div className="flex flex-col mt-4">
                 <div className="flex flex-col gap-1">
@@ -85,14 +85,14 @@ export default function AddWorkoutPlan() {
                 <div className="w-full h-[1px] bg-[#313244] mt-4"></div>
 
                 <button
-                    className="mt-4 bg-green-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
+                    className="mt-4 bg-transparent outline outline-1 rounded-xl py-2 px-3 outline-[#313244] text-blue-500"
                     onClick={addExercise}
                 >
                     Přidat cvik
                 </button>
 
                 <button
-                    className="mt-4 bg-blue-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
+                    className="mt-4 bg-green-600 rounded-xl py-2 px-3"
                     onClick={savePlan} // Save workout plan
                 >
                     Uložit plán

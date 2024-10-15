@@ -3,9 +3,12 @@
 import { useState, useEffect, Suspense } from "react"; // Import Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase"; 
-import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan"; 
+import { updateWorkoutPlan, getWorkoutPlans, deleteWorkoutPlan } from "@/lib/firebase";
+import { WorkoutPlan, Exercise } from "@/Interfaces/workoutPlan";
 import { ExerciseItem } from "../ExerciseItem";
+import Link from "next/link";
+import Image from "next/image"
+import arrowBackIcon from "@/icons/i_arrow_back.png"
 
 const EditWorkoutPlanContent = () => {
     const { user } = useAuth();
@@ -53,7 +56,12 @@ const EditWorkoutPlanContent = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold">Upravit tréninkový plán</h1>
+            <Link href={"/plans"}>
+                <div className="flex">
+                    <Image alt="" src={arrowBackIcon} className="h-5 w-5 mt-1 mr-1" />
+                    <h1 className="text-2xl font-bold">Uravit plán</h1>
+                </div>
+            </Link>
 
             <div className="flex flex-col mt-4">
                 <div className="flex flex-col gap-1">
@@ -86,13 +94,13 @@ const EditWorkoutPlanContent = () => {
                 </div>
 
                 <button
-                    className="mt-4 bg-blue-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
+                    className="mt-4 bg-green-600 rounded-xl py-2 px-3"
                     onClick={savePlan}
                 >
                     Uložit plán
                 </button>
                 <button
-                    className="mt-6 bg-red-600 outline outline-1 rounded-xl py-2 px-3 outline-[#313244]"
+                    className="mt-6 bg-red-600 rounded-xl py-2 px-3"
                     onClick={deletePlan}
                 >
                     Smazat plán
